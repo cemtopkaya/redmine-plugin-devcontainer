@@ -1,0 +1,66 @@
+version: '3.1'
+
+networks:
+  test-network-redmine_plugin:
+    name: test-network-redmine_plugin
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 20.0.5.0/24
+          gateway: 20.0.5.1
+
+services:
+  redmine:
+    container_name: test-plugin-redmine
+    build:
+      dockerfile: Dockerfile
+      context: ./Dockerfiles/redmine
+    pull_policy: if_not_present
+    image: redmine:5.0.2-custom
+    restart: always
+    entrypoint: "tail -f /dev/null && ./docker-entrypoint.sh rails server -b 0.0.0.0"
+
+    networks:
+      test-network-redmine_plugin:
+
+
+    ports:
+      - 196:3000
+
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_USERNAME: root
+      REDMINE_DB_PASSWORD: admin
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_SECRET_KEY_BASE: admin
+    volumes:
+      - ../:/workspace
+      # Burada eklenti dizini oluşturulacak
+      - ../volume/redmine/redmine-plugins:/usr/src/redmine/plugins
+      # Redmine ayarları bu dosyalarda olacak
+      - ../volume/redmine/redmine-config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - ../volume/redmine/redmine-config/database.yml:/usr/src/redmine/config/database.yml
+      - ../volume/redmine/redmine-config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb
+      # Plantuml 
+      - ../volume/redmine/plantuml/plantuml.sh:/usr/bin/plantuml.sh:z
+      - ../volume/redmine/plantuml/plantuml-1.2022.7.jar:/home/redmine/plantuml.jar:z
+    depends_on:
+      - db
+
+  db:
+    container_name: test-plugin-redmine_mysql
+    image: mysql:5.7
+    restart: always
+    networks:
+      test-network-redmine_plugin:
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: redmine
+      MYSQL_USER: admin
+
+    ports:
+      - 3336:3306
+
+    volumes:
+      - ./volume/mysql/mysql-data:/var/lib/mysql
+      - ./volume/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf

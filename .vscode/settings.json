@@ -1,0 +1,26 @@
+{
+  "disableGlobalExtensions": true,
+  "files.autoSave": "off",
+  "extensions.supportVirtualWorkspaces": {
+    "pub.name": true
+  },
+  "remote.downloadExtensionsLocally": true,
+  "dev.containers.dockerComposePath": "docker compose",
+  //---------- Live Share -------------------------------
+  "liveshare.allowGuestDebugControl": true,
+  "liveshare.allowGuestTaskControl": true,
+  "liveshare.languages.allowGuestCommandControl": true,
+  "liveshare.openSharedServers": false,
+  "liveshare.publishWorkspaceInfo": true,
+  //---------- GIT --------------------------------------
+  "git.ignoreLimitWarning": true,
+  "git.autofetch": true,
+  //---------- SETTINGS ---------------------------------
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+}
