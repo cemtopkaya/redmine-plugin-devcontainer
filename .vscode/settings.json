@@ -1,10 +1,22 @@
 {
+  //---------- SETTINGS ---------------------------------
+  "editor.formatOnSave": true,
+  "editor.fontSize": 16,
+  "debug.console.fontSize": 18,
+  "terminal.integrated.fontSize": 16,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "disableGlobalExtensions": true,
   "files.autoSave": "onFocusChange",
   "extensions.supportVirtualWorkspaces": {
     "pub.name": true
   },
   "remote.downloadExtensionsLocally": true,
+  //---------- DEV CONTAINER ----------------------------
   "dev.containers.dockerComposePath": "docker compose",
   //---------- Live Share -------------------------------
   "liveshare.allowGuestDebugControl": true,
@@ -15,12 +27,5 @@
   //---------- GIT --------------------------------------
   "git.ignoreLimitWarning": true,
   "git.autofetch": true,
-  //---------- SETTINGS ---------------------------------
-  "editor.formatOnSave": true,
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  //-----------------------------------------------------
 }
