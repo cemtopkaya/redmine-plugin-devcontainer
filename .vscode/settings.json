@@ -1,6 +1,6 @@
 {
   "disableGlobalExtensions": true,
-  "files.autoSave": "off",
+  "files.autoSave": "onFocusChange",
   "extensions.supportVirtualWorkspaces": {
     "pub.name": true
   },

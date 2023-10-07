@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 networks:
   test-network-redmine_plugin:
@@ -36,12 +36,12 @@ services:
     volumes:
       - ../:/workspace
       # Burada eklenti dizini oluşturulacak
-      - ../volume/redmine/redmine-plugins:/usr/src/redmine/plugins
+      - ../volume/redmine/plugins:/usr/src/redmine/plugins
       # Redmine ayarları bu dosyalarda olacak
       - ../volume/redmine/redmine-config/configuration.yml:/usr/src/redmine/config/configuration.yml
       - ../volume/redmine/redmine-config/database.yml:/usr/src/redmine/config/database.yml
       - ../volume/redmine/redmine-config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb
-      # Plantuml 
+      # Plantuml
       - ../volume/redmine/plantuml/plantuml.sh:/usr/bin/plantuml.sh:z
       - ../volume/redmine/plantuml/plantuml-1.2022.7.jar:/home/redmine/plantuml.jar:z
     depends_on:
@@ -59,8 +59,8 @@ services:
       MYSQL_USER: admin
 
     ports:
-      - 3336:3306
+      - 3306:3306
 
     volumes:
-      - ./volume/mysql/mysql-data:/var/lib/mysql
-      - ./volume/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - ../volume/mysql/mysql-data:/var/lib/mysql
+      - ../volume/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
