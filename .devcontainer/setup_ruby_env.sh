@@ -9,3 +9,7 @@ ln -s /workspace/ornek_eklenti /usr/src/redmine/plugins/ornek_eklenti
 
 # Redmine docker içinde aşağıdaki compose.yml ile çalışıyor ve içine VS Code ile debug için eklenti kuruyoruz.
 gem install ruby-debug-ide
+
+# Aşağıdaki hata için çalıştırılacak:
+# Missing `secret_key_base` for 'production' environment, set this string with `bin/rails credentials
+# EDITOR="nano --wait" /usr/src/redmine/bin/rails credentials:edit

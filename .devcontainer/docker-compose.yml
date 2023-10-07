@@ -18,14 +18,13 @@ services:
     pull_policy: if_not_present
     image: redmine:5.0.2-custom
     restart: always
-    entrypoint: "tail -f /dev/null && ./docker-entrypoint.sh rails server -b 0.0.0.0"
+    # entrypoint: "tail -f /dev/null && ./docker-entrypoint.sh rails server -b 0.0.0.0"
 
     networks:
       test-network-redmine_plugin:
 
-
     ports:
-      - 196:3000
+      - 3000:3000
 
     environment:
       REDMINE_DB_MYSQL: db
@@ -38,6 +37,7 @@ services:
       # Burada eklenti dizini oluşturulacak
       - ../volume/redmine/plugins:/usr/src/redmine/plugins
       # Redmine ayarları bu dosyalarda olacak
+      - ../volume/redmine/redmine-config/secrets.yml:/usr/src/redmine/config/secrets.yml
       - ../volume/redmine/redmine-config/configuration.yml:/usr/src/redmine/config/configuration.yml
       - ../volume/redmine/redmine-config/database.yml:/usr/src/redmine/config/database.yml
       - ../volume/redmine/redmine-config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb

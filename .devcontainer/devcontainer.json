@@ -19,7 +19,7 @@
 				"ms-vscode-remote.vscode-remote-extensionpack",
 				"MS-vsliveshare.vsliveshare",
 				// Ruby uzantıları
-				"rebornix.ruby",
+				"rebornix.Ruby",
 				// YAML uzantıları
 				"esbenp.prettier-vscode" // formatlayıcı
 			]
