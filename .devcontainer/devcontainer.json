@@ -20,8 +20,14 @@
 				"MS-vsliveshare.vsliveshare",
 				// Ruby uzantıları
 				"rebornix.Ruby",
+				"castwide.solargraph", // intellisense, biçimlendirme ve diğer kolaylıklar için
+				"jnbt.vscode-rufo", // ruby formatter (rufo)
 				// YAML uzantıları
-				"esbenp.prettier-vscode" // formatlayıcı
+				"esbenp.prettier-vscode", // formatlayıcı
+				// VS Code yardımcı
+				"mhutchie.git-graph", // Git dallarını görselleştirir
+				"Gruntfuggly.todo-tree", // Yapılacak diye işaretlenen girdileri görüntüler
+				"johnpapa.vscode-peacock" // VS Code pencerelerinin renklerle ayrıştırır
 			]
 		}
 	},

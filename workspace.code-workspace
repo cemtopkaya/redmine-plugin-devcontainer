@@ -1,0 +1,114 @@
+{
+	"folders": [
+		// Konteynerleri ayaklandırmak ve ayarları tutmak için kullanılan path.
+		// Redmine üstünde debug yaparsanız /usr/src/redmine/plugins içindeki dosyalara 
+		// hata ayıklamayı bağlayabilirsiniz. Eğer /workspace içindeki bir ruby kodunda breakpoint
+		// oluşturursanız hata ayıklama sırasında durmayacaktır.
+		{
+			"name": "workspace_dizini",
+			"path": "/workspace"
+		},
+		{
+			"name": "redmine_plugins_dizini",
+			"path": "/usr/src/redmine/plugins"
+		}
+	],
+	"launch": {
+		"configurations": [
+			{
+				"name": "Redmine rails server",
+				"type": "Ruby",
+				"request": "launch",
+				"program": "../bin/rails",
+				"cwd": "${workspaceFolder:redmine_plugins_dizini}",
+				"args": [
+					"server",
+					"-p=3001",
+					"-P=3001",
+				]
+			}
+		]
+	},
+	"settings": {
+		"files.exclude": {
+			// volume dizini docker ayaklandırmak için kullanılıyor bu yüzden gizle.
+			"**/volume": true
+		},
+		//---------- SETTINGS ---------------------------------
+		"editor.formatOnSave": true,
+		"editor.fontSize": 16,
+		"debug.console.fontSize": 18,
+		"terminal.integrated.fontSize": 16,
+		"editor.minimap.autohide": true,
+		"[json]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[yaml]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"disableGlobalExtensions": true,
+		"files.autoSave": "onFocusChange",
+		"extensions.supportVirtualWorkspaces": {
+			"pub.name": true
+		},
+		"remote.downloadExtensionsLocally": true,
+		//---------- RUBY ----------------------------
+		"[ruby]": {
+			"editor.defaultFormatter": "jnbt.vscode-rufo",
+			"editor.formatOnSave": true,
+		},
+		// "ruby.format": "rubocop", // use rubocop for formatting
+		"ruby.format": "rufo",
+		"rufo.exe": "/usr/local/bundle/bin/rufo",
+		"rufo.useBundler": false,
+		"ruby.rubocop.onSave": true,
+		"ruby.useBundler": true, //run non-lint commands with bundle exec
+		"ruby.useLanguageServer": true, // use the internal language server (see below)
+		"ruby.lint": {
+			"rubocop": {
+				"useBundler": true // enable rubocop via bundler
+			},
+			"reek": {
+				"useBundler": true // enable reek via bundler
+			},
+		},
+		"files.associations": {
+			"*.html.erb": "html",
+			"*.erb": "erb"
+		},
+		"editor.formatOnSaveTimeout": 5000,
+		//---------- DEV CONTAINER ----------------------------
+		"dev.containers.dockerComposePath": "docker compose",
+		//---------- Live Share -------------------------------
+		"liveshare.allowGuestDebugControl": true,
+		"liveshare.allowGuestTaskControl": true,
+		"liveshare.languages.allowGuestCommandControl": true,
+		"liveshare.openSharedServers": false,
+		"liveshare.publishWorkspaceInfo": true,
+		//---------- GIT --------------------------------------
+		"git.ignoreLimitWarning": true,
+		"git.autofetch": true,
+		//---------- VS Code Renkelndirme ---------------------
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#65c89b",
+			"activityBar.background": "#65c89b",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#945bc4",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#15202b99",
+			"sash.hoverBorder": "#65c89b",
+			"statusBar.background": "#42b883",
+			"statusBar.foreground": "#15202b",
+			"statusBarItem.hoverBackground": "#359268",
+			"statusBarItem.remoteBackground": "#42b883",
+			"statusBarItem.remoteForeground": "#15202b",
+			"titleBar.activeBackground": "#42b883",
+			"titleBar.activeForeground": "#15202b",
+			"titleBar.inactiveBackground": "#42b88399",
+			"titleBar.inactiveForeground": "#15202b99"
+		},
+		"peacock.remoteColor": "#42b883",
+		//-----------------------------------------------------
+	}
+}

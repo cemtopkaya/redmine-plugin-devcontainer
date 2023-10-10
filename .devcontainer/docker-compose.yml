@@ -23,6 +23,7 @@ services:
     networks:
       test-network-redmine_plugin:
 
+
     ports:
       - 3000:3000
 
