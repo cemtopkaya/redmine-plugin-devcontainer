@@ -14,6 +14,8 @@ volume/redmine/redmine-config/configuration.yml
 # Geliştirilen eklentinin zaten git reposu var olduğu için yok sayacağız 
 volume/redmine/plugins/ulak_kiwi_test_plan/*
 
+volume/redmine/repos/5GCN_NRF.git/*
+
 /volume/mysql/mysql-data/*
 # Used by dotenv library to load environment variables.
 # .env
