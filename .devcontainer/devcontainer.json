@@ -19,7 +19,8 @@
 				"ms-vscode-remote.vscode-remote-extensionpack",
 				"MS-vsliveshare.vsliveshare",
 				// Ruby uzantıları
-				"rebornix.Ruby",
+				"rebornix.Ruby", // Deprecate oldu yerini Shopify.ruby-lsp alacak
+				"Shopify.ruby-lsp", // Yeni uzantı bu olacak
 				"castwide.solargraph", // intellisense, biçimlendirme ve diğer kolaylıklar için
 				"jnbt.vscode-rufo", // ruby formatter (rufo)
 				// YAML uzantıları

@@ -16,7 +16,7 @@
 	"launch": {
 		"configurations": [
 			{
-				"name": "Redmine rails server",
+				"name": "Ruby Extension - Redmine rails server",
 				"type": "Ruby",
 				"request": "launch",
 				"program": "../bin/rails",
@@ -26,10 +26,19 @@
 					"-p=3001",
 					"-P=3001",
 				]
-			}
+			},
+			{
+				"type": "ruby_lsp",
+				"name": "LSP Extension - Redmine rails server",
+				"request": "launch",
+				"program": "${workspaceFolder:redmine_plugins_dizini}/../bin/rails server -p=3001 -P=3001"
+			},
 		]
 	},
 	"settings": {
+		"rubyLsp.rubyVersionManager": "auto",
+		"rubyLsp.customRubyCommand": "PATH=/usr/bin/ruby:$PATH",
+		"rubyLsp.formatter": "auto",
 		// Explorer sekmesinde görüntülenmesini istemediğimiz dizinler için "files.exclude"
 		"files.exclude": {
 			// volume dizini docker ayaklandırmak için kullanılıyor bu yüzden gizle.
