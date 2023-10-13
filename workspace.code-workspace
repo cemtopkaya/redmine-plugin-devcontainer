@@ -100,7 +100,6 @@
 		"git.autofetch": true,
 		//---------- VS Code Renkelndirme ---------------------
 		"workbench.colorCustomizations": {
-			"tab.activeBorder": "#ff0000",
 			"tab.unfocusedActiveBorder": "#000000",
 			"activityBar.activeBackground": "#65c89b",
 			"activityBar.background": "#65c89b",
