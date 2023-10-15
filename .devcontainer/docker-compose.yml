@@ -23,7 +23,6 @@ services:
     networks:
       test-network-redmine_plugin:
 
-
     ports:
       - 3000:3000
 
@@ -42,6 +41,7 @@ services:
       - ../volume/redmine/redmine-config/configuration.yml:/usr/src/redmine/config/configuration.yml
       - ../volume/redmine/redmine-config/database.yml:/usr/src/redmine/config/database.yml
       - ../volume/redmine/redmine-config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb
+      # - ../volume/redmine/redmine-config/application.rb:/usr/src/redmine/config/application.rb
       # Plantuml
       - ../volume/redmine/plantuml/plantuml.sh:/usr/bin/plantuml.sh:z
       - ../volume/redmine/plantuml/plantuml-1.2022.7.jar:/home/redmine/plantuml.jar:z

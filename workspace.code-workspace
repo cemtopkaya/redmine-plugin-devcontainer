@@ -13,6 +13,24 @@
 			"path": "/usr/src/redmine/plugins"
 		}
 	],
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Kill 3001 puma",
+				"command": "kill -9 `ps aux | grep 3001 | head -n1 | awk '{print $2}'` && rm -f /usr/src/redmine/3001",
+				"type": "shell",
+				"args": [],
+				"problemMatcher": [
+					"$tsc"
+				],
+				"presentation": {
+					"reveal": "always"
+				},
+				"group": "build"
+			}
+		]
+	},
 	"launch": {
 		"configurations": [
 			{
@@ -42,7 +60,7 @@
 		// Explorer sekmesinde görüntülenmesini istemediğimiz dizinler için "files.exclude"
 		"files.exclude": {
 			// volume dizini docker ayaklandırmak için kullanılıyor bu yüzden gizle.
-			"**/volume": true
+			// "**/volume": true
 		},
 		//---------- SETTINGS ---------------------------------
 		"editor.formatOnSave": true,
@@ -68,6 +86,11 @@
 			"editor.formatOnSave": true,
 		},
 		// "ruby.format": "rubocop", // use rubocop for formatting
+		"emmet.showSuggestionsAsSnippets": true,
+		"emmet.includeLanguages": {
+			"erb": "html",
+			"ruby": "html"
+		},
 		"ruby.format": "rufo",
 		"rufo.exe": "/usr/local/bundle/bin/rufo",
 		"rufo.useBundler": false,
