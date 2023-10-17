@@ -43,7 +43,7 @@ services:
       - ../volume/redmine/redmine-config/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb
       # - ../volume/redmine/redmine-config/application.rb:/usr/src/redmine/config/application.rb
       # Plantuml
-      - ../volume/redmine/plantuml/plantuml.sh:/usr/bin/plantuml.sh:z
+      - ../volume/redmine/plantuml/plantuml.sh:/usr/bin/plantuml:z
       - ../volume/redmine/plantuml/plantuml-1.2022.7.jar:/home/redmine/plantuml.jar:z
       - ../volume/redmine/repos/5GCN_NRF.git:/home/redmine/repos/5GCN_NRF.git
     depends_on:
