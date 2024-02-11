@@ -46,8 +46,10 @@ services:
       - ../volume/redmine/plantuml/plantuml.sh:/usr/bin/plantuml:z
       - ../volume/redmine/plantuml/plantuml-1.2022.7.jar:/home/redmine/plantuml.jar:z
       - ../volume/redmine/repos/5GCN_NRF.git:/home/redmine/repos/5GCN_NRF.git
+
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     container_name: test-plugin-redmine_mysql
@@ -59,6 +61,9 @@ services:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: redmine
       MYSQL_USER: admin
+
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -padmin"]
 
     ports:
       - 3306:3306
