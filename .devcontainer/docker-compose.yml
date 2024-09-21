@@ -22,16 +22,19 @@ services:
 
     networks:
       test-network-redmine_plugin:
+        aliases:
+          - web
 
     ports:
       - 3000:3000
 
     environment:
-      REDMINE_DB_MYSQL: db
-      REDMINE_DB_USERNAME: root
-      REDMINE_DB_PASSWORD: admin
-      REDMINE_DB_DATABASE: redmine
-      REDMINE_SECRET_KEY_BASE: admin
+      REDMINE_DB_MYSQL: ${REDMINE_DB_MYSQL}
+      REDMINE_DB_USERNAME: ${REDMINE_DB_USERNAME}
+      REDMINE_DB_PASSWORD: ${REDMINE_DB_PASSWORD}
+      REDMINE_DB_DATABASE: ${REDMINE_DB_DATABASE}
+      REDMINE_SECRET_KEY_BASE: ${REDMINE_SECRET_KEY_BASE}
+      
     volumes:
       - ../:/workspace
       # Burada eklenti dizini oluşturulacak
@@ -57,10 +60,12 @@ services:
     restart: always
     networks:
       test-network-redmine_plugin:
+        aliases:
+          - db_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: redmine
-      MYSQL_USER: admin
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
 
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -padmin"]

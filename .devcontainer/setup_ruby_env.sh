@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Mysql istemcisini kur
+apt-get install default-mysql-client -y
+
 # MySQL sunucusunun IP adresi ve portu
-MYSQL_HOST=db
+MYSQL_HOST=db_mysql
 MYSQL_PORT=3306
 
 # MySQL kullanıcı adı ve şifresi
@@ -14,10 +17,18 @@ DATABASE="redmine"
 # MySQL sunucusuna bağlanma denemesi yapacak fonksiyon
 check_mysql_connection() {
 
-    mysqladmin ping -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD &> /dev/null
+    # mysqladmin ping -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD &> /dev/null
     
     # Bağlantı başarılıysa
-    if [ $? -eq 0 ]; then
+    #if [ $? -eq 0 ]; then
+    #    echo "MySQL sunucusuna başarılı bir şekilde bağlandı."
+    #else
+    #    # MySQL sunucusuna bağlanma denemesi yap
+    #    echo "MySQL sunucusuna bağlanılamadı, bekleniyor..."
+    #    sleep 5
+    #    check_mysql_connection;
+    #fi
+    if mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SELECT 1;" > /dev/null 2>&1; then
         echo "MySQL sunucusuna başarılı bir şekilde bağlandı."
     else
         # MySQL sunucusuna bağlanma denemesi yap
@@ -156,3 +167,4 @@ echo -e "\n\n----------------------------- CREATE SYMBOLIC LINK FOR REDMINE PLUG
 create_symlink_of_plugin;
 
 # ------------------------------------------------------------------------------------------------------------
+exit 0
