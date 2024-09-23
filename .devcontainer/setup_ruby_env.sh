@@ -41,6 +41,17 @@ check_mysql_connection() {
 echo -e "\n\n----------------------------- CHECK IF MySQL SERVER IS UP ---------------------------------------------"
 check_mysql_connection;
 
+run_redmine(){
+    if  pgrep -f puma; then
+        echo "Puma sunucusu zaten çalışıyor."
+    else
+        echo "Puma sunucusu başlatılıyor..."
+        cd /usr/src/redmine
+        /docker-entrypoint.sh rails server -b 0.0.0.0 &
+    fi
+}
+run_redmine;
+
 check_redmine_isup(){
     # -s parametresi, curl komutunun sessiz modda çalışmasını sağlar, yani çıktıya hiçbir şey yazdırmaz.
     # -o /dev/null, curl çıktısını null aygıtına (yani, çıktıyı atar) yönlendirir.
@@ -155,12 +166,12 @@ aktivateRestAPI() {
 - :view_news
 - :view_messages
 ','default','all','all',1,NULL),
-	 ('Anonymous',0,1,2,'---
+('Anonymous',0,1,2,'---
 - :view_issues
 - :view_news
 - :view_messages
 ','default','all','all',1,NULL),
-	 ('Developer',1,1,0,'---
+('Developer',1,1,0,'---
 - :view_messages
 - :view_issues
 - :add_issues
@@ -195,7 +206,7 @@ permissions_tracker_ids: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
   add_issue_notes: []
   delete_issues: []
 '),
-	 ('Manager',2,1,0,'---
+('Manager',2,1,0,'---
 - :add_project
 - :edit_project
 - :manage_members
@@ -345,11 +356,12 @@ create_symlink_of_plugin(){
     ln -s -v /workspace/ornek_eklenti /usr/src/redmine/plugins/ornek_eklenti  && echo "link created" || echo "link creation failed"
 }
 
-echo -e "\n\n----------------------------- CREATE SYMBOLIC LINK FOR REDMINE PLUGIN ---------------------------------"
-create_symlink_of_plugin;
+# echo -e "\n\n----------------------------- CREATE SYMBOLIC LINK FOR REDMINE PLUGIN ---------------------------------"
+# create_symlink_of_plugin;
 
-echo -e "\n\n----------------------------- CREATE SYMBOLIC LINK FOR REDMINE PLUGIN ---------------------------------"
-create_symlink_of_plugin;
+# echo -e "\n\n----------------------------- .bashrc & aliases ---------------------------------"
+echo "alias ll='ls -al --color=auto'" >> ~/.bashrc
+source ~/.bashrc
 
 # ------------------------------------------------------------------------------------------------------------
 exit 0
