@@ -28,7 +28,8 @@
 				// VS Code yardımcı
 				"mhutchie.git-graph", // Git dallarını görselleştirir
 				"Gruntfuggly.todo-tree", // Yapılacak diye işaretlenen girdileri görüntüler
-				"johnpapa.vscode-peacock" // VS Code pencerelerinin renklerle ayrıştırır
+				"johnpapa.vscode-peacock", // VS Code pencerelerinin renklerle ayrıştırır
+				"GitHub.copilot"
 			]
 		}
 	},
